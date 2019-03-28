@@ -1,18 +1,19 @@
 OBJS = main.o lista.o
 BYNARY = metro
+CXX = g++
 CFLAGS = -g -w#banderas para el compilador de c++
 #LDFLAGS = 
 
-all: metro #cuando solo se escribe make en la terminal
+all: $(BYNARY)#cuando solo se escribe make en la terminal
 
 metro: $(OBJS)
-	g++ -o $(BYNARY) $(OBJS)
+	$(CXX) -o $(BYNARY) $(OBJS)
 
 main.o: main.cpp lista.h
-	g++ $(CFLAGS) -c main.cpp
+	$(CXX) $(CFLAGS) -c main.cpp
 
 lista.o: lista.cpp lista.h
-	g++ $(CFLAGS) -c lista.cpp
+	$(CXX) $(CFLAGS) -c lista.cpp
 
 clean: 
 	rm -f $(BYNARY) $(OBJS)

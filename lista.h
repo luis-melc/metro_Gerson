@@ -28,6 +28,8 @@ public:
  bool Empty();
  // int Find(int);
   void AtBegin(string);
+  void Show();
+
  /* void AtEnd(int);
   void InsertBefore(int, int);
   void InsertAfter(int, int);
@@ -45,6 +47,5 @@ public:
   void SelectionSort();
   void ShellSort();
   int& At(int);
-  void Show();
   void Clear();*/
 };

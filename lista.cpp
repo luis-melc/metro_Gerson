@@ -35,3 +35,27 @@ void Lista::AtBegin (string value){
     count++;
 }
 
+void Lista::Show()
+{
+  if (!Empty())
+  {
+    aux = list;
+    while (aux != NULL)
+    {
+      cout << aux->value << "->";
+      aux = aux->next;
+    }
+    cout << endl;
+    aux = end;
+    while (aux != NULL)
+    {
+      cout << aux->value << "->";
+      aux = aux->back;
+    }
+    cout << endl << endl;
+  }
+  else
+    cout << "Lista Vacia.";
+  cout << endl;
+}
+
