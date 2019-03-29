@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -20,32 +21,13 @@ private:
   Nodo * nuevo;
   Nodo * aux;
   int count;
-  void FindHalf(int&);
 
 public:
   Lista();
   ~Lista();
- bool Empty();
- // int Find(int);
+  bool Empty();
   void AtBegin(string);
-  void Show();
-
- /* void AtEnd(int);
-  void InsertBefore(int, int);
-  void InsertAfter(int, int);
-  void InsertX(int, int);
-  void DeleteBegin();
-  void DeleteEnd();
-  void DeleteBefore(int);
-  void DeleteAfter(int);
-  void DeleteX(int);
-  void DeleteAllX(int);
-  void BubbleSort();
-  void ShakerSort();
-  void InsertionSort();
-  void BinarySort();
-  void SelectionSort();
-  void ShellSort();
-  int& At(int);
-  void Clear();*/
+  void Show(bool);
+  void Route(Lista,vector<string>);
+  int Find(string);
 };

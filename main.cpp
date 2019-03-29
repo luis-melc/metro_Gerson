@@ -1,13 +1,17 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "lista.h"
 
 using namespace std;
 
-int menu();
+vector<string> menu();
+
 
 int main(int argc, char const *argv[])
 {
+    vector<string> data;
+    int line,op;
     string stationsL1[20]={"Pantitlan","Zaragosa","Gomez Farias","Boulevard Pto. Aereo","Balbuena","Moctezuma","San Lazaro","Candelaria","Merced","Pino Suarez","Isabel la Catolica","Salto del Agua","Balderas","Cuauhtemoc","Insurgentes","Sevilla","Chapultepec","Juanacatlan","Tacubaya","Observatorio"};
     string stationsL2[24]={"Tasqueña","General Anaya","Ermita","Portales","Nativitas","Villa de Cortes","Xola","Viaducto","Chabacano","San Antonio Abad","Pino Suarez","Zocalo","Allende","Bellas Artes","Hidalgo","Revolucion","San Cosme","Normal","Colegio Militar","Popotla","Cuitlahuac","Tacuba","Panteones","Cuatro Caminos"};
     string stationsL3[21]={"Universidad","Copilco","Miguel Angel de Quevedo","Viveros/Derechos Humanos","Coyoacan","Zapata","Division del Norte","Eugenia","Etiopia/Plaza de la Transparencia","Centro Medico","Hospital General","Niños Heroes","Balderas","Juarez","Hidalgo","Guerrero","Tlatelolco","La Raza","Portero","Deportivo 18 de Marzo","Indios Verdes"};
@@ -32,6 +36,7 @@ int main(int argc, char const *argv[])
     Lista LineaA = Lista();
     Lista LineaB = Lista();
     Lista Linea12 = Lista();
+    Lista Route = Lista();
     for(int i = 0; i < 20; i++)
         Linea1.AtBegin(stationsL1[i]);
     for(int i = 0; i < 24; i++)
@@ -56,31 +61,85 @@ int main(int argc, char const *argv[])
         LineaB.AtBegin(stationsLB[i]);
     for(int i = 0; i < 20; i++)
         Linea12.AtBegin(stationsL12[i]);
-    cout << "Linea 1" << endl;
-    Linea1.Show();
-    cout << "Linea 2" << endl;
-    Linea2.Show();
-    cout << "Linea 3" << endl;
-    Linea3.Show();
-    cout << "Linea 4" << endl;
-    Linea4.Show();
-    cout << "Linea 5" << endl;
-    Linea5.Show();
-    cout << "Linea 6" << endl;
-    Linea6.Show();
-    cout << "Linea 7" << endl;
-    Linea7.Show();
-    cout << "Linea 8" << endl;
-    Linea8.Show();
-    cout << "Linea 9" << endl;
-    Linea9.Show();
-    cout << "Linea A" << endl;
-    LineaA.Show();
-    cout << "Linea B" << endl;
-    LineaB.Show();
-    cout << "Linea12" << endl;
-    Linea12.Show();
+    do
+    {
+        data = menu();
+        if (data[0] == "A" || data[0] == "a")
+            line = 10;
+        else if (data[0] == "B" || data[0] == "b")
+            line = 11;
+        else
+            line = atoi(data[0].c_str());
+        switch (line)
+        {
+            case 1:
+                Linea1.Route(Linea1,data);
+                break;
+            case 2:
+                Linea2.Route(Linea2,data);
+                break;
+            case 3:
+                Linea3.Route(Linea3,data);
+                break;
+            case 4:
+                Linea4.Route(Linea4,data);
+                break;
+            case 5:
+                Linea5.Route(Linea5,data);
+                break;
+            case 6:
+                Linea6.Route(Linea6,data);
+                break;
+            case 7:
+                Linea7.Route(Linea7,data);
+                break;
+            case 8:
+                Linea8.Route(Linea8,data);
+                break;
+            case 9:
+                Linea9.Route(Linea9,data);
+                break;
+            case 10:
+                LineaA.Route(LineaA,data);
+                break;
+            case 11:
+                LineaB.Route(LineaB,data);
+                break;
+            case 12:
+                Linea12.Route(Linea12,data);
+                break;
+            default:
+                cout << "Error en la linea seleccionada";
+                break;
+        }
+        cout << "Presiona \'0' para salir o cualquier tecla para countinuar: ";
+        cin >> op;
+    } while (op != 0);
+    
+    
+    
 
     return 0;
 }
 
+vector<string> menu(){
+    vector<string> datos,lineas;
+    lineas = {
+        "linea 1","linea 2","linea 3","linea 4","linea 5","linea 6","linea 7","linea 8","linea 9","linea A","linea B","linea 12"
+    };
+    string chosenLine, startStation, endStation;
+    cout << "\t \t Selecciona un linea del metro" << endl;
+    for (auto elemento : lineas)
+		cout << "\t" << elemento << endl;
+    cout << "\t Linea: ";
+    cin >> chosenLine;
+    cin.ignore();
+    cout << "\t Estacion partida: ";
+    getline(cin,startStation);
+    cout << "\t Estacion destino: ";
+    getline(cin,endStation);
+    datos.push_back(chosenLine);
+    datos.push_back(startStation);
+    datos.push_back(endStation);
+    return datos;
+}
