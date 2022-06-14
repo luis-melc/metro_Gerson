@@ -70,6 +70,7 @@ void Lista::Show(bool op)
   else
     cout << "Lista Vacia.";
   cout << endl;
+  cout << endl;
 }
 
 void  Lista::Route(Lista line,vector<string> data){
